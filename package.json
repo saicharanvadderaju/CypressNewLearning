@@ -1,0 +1,18 @@
+{
+  "name": "cypressnewlearning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules\\.bin\\cypress run",
+    "headtest":"npm run test -- --headed",
+    "chrome":"npm run test -- --browser chrome",
+    "RecordDashboardandreporter": "npm run test -- --record --key c7cf2337-b51e-4bb7-a1a6-a0624a02f724"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.14.0",
+    "cypress-iframe": "^1.0.1"
+  }
+}
