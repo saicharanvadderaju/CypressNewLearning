@@ -33,7 +33,8 @@ describe('Building Framework', () => {
     homepage.getEntrepreneurRadio().should('be.disabled')
 
     //Click on shop button
-    homepage.getShopButton().click()
+    cy.performclick(homepage.getShopButton()) //check command.js for click reusable method
+    /*homepage.getShopButton().click()*/
 
     //select a product/products
     globalThis.data.productname.forEach(element => cy.selectProduct(element));

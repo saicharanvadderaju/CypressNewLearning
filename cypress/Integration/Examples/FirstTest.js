@@ -1,10 +1,16 @@
 /// <reference types="Cypress" />
+import GreenkartPage from "../PageObjects/GreenkartPage"
 
 describe('My First Test Suite', () => {
     it('My First Test case', () => {
     cy.visit('https://rahulshettyacademy.com/seleniumPractise/#/');
+    const greenkartpage=new GreenkartPage()
 
-    cy.get("[type='search']").type('ca');
+    cy.senddata(greenkartpage.getsearch(),'ca')//Page object is written in Greenkartpage.js and reusable method is in commands.js
+
+    //cy.senddata(cy.get("[type='search']"),'ca')
+
+    //cy.get("[type='search']").type('ca');
 
     cy.get('.product:visible').should('have.length',4)
 

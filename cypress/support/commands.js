@@ -32,6 +32,16 @@ Cypress.Commands.add('selectProduct', (productName) => {
     cy.get(locator).type(name)
  })
 
+ Cypress.Commands.add('senddata', (locator,name) => { 
+
+    locator.type(name)
+ })
+
+ Cypress.Commands.add('performclick', (locator) => { 
+
+    locator.click()
+ })
+
 
 //
 //
