@@ -13,6 +13,12 @@ describe('Static and Dynamic Dropdowns Test Suite', () => {
 
    cy.get('input#autocomplete').type('ind')
 
+   //Check if a text exists in the dropdown or list
+   cy.get('ul#ui-id-1 li div').contains('India').should('exist');
+
+   //Check if a text exists in the dropdown or list
+   cy.get("[class*='jumbotron'] [class='btn btn-primary']").contains('Signup').should('exist');
+
    //Compare 2 arrays with values
    const values=['British Indian Ocean Territory', 'India', 'Indonesia']
    cy.get('ul#ui-id-1 li div').should(($el)=>{
