@@ -42,6 +42,17 @@ Cypress.Commands.add('selectProduct', (productName) => {
     locator.click()
  })
 
+ Cypress.Commands.add("LoginAPI",()=>{
+
+   cy.request("POST","https://rahulshettyacademy.com/api/ecom/auth/login",
+   {"userEmail":"saicharanvaddiraju@gmail.com","userPassword":"Saicharan@2b8"}).
+   then((response)=>{
+      expect(response.status).to.eq(200)
+      Cypress.env('token',response.body.token)
+   })
+
+ })
+
 
 //
 //

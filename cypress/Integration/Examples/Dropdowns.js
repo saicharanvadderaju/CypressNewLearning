@@ -26,6 +26,7 @@ describe('Static and Dynamic Dropdowns Test Suite', () => {
     if($el.text()==="India")
     {
       cy.wrap($el).click()
+      
     }
 
    })

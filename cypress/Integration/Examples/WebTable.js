@@ -1,10 +1,15 @@
 /// <reference types="Cypress" />
+import HomePage from "../PageObjects/HomePage";
 
 describe('Handle WebTable', () => {
+  
     it('Handle WebTable Test case', () => {
+      const homepage=new HomePage()
     cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
 
-    cy.get('tr td:nth-child(2)').each(($el, index, $list) => {
+    //cy.get('tr td:nth-child(2)').each(($el, index, $list) => {
+
+      homepage.getTableColumn(2).each(($el, index, $list) => {
 
       const text=$el.text()
 
