@@ -21,10 +21,20 @@ describe('Static and Dynamic Dropdowns Test Suite', () => {
 
    //Compare 2 arrays with values
    const values=['British Indian Ocean Territory', 'India', 'Indonesia']
-   cy.get('ul#ui-id-1 li div').should(($el)=>{
-    const text=$el.toArray().map(el => el.innerText)
-    expect(text).to.deep.eq(values)
-   })
+
+   cy.CompareTwoListsorArrays(cy.get('ul#ui-id-1 li div'),values)
+
+    //  cy.get('ul#ui-id-1 li div').should(($el)=>{
+  //   const text=$el.toArray().map(el => el.innerText)
+  //   expect(text).to.deep.eq(values)
+  //  })
+
+   //compare 2 arrays
+
+   const headertextvalues=['Home','Practice','Login','Signup']
+   cy.CompareTwoListsorArrays(cy.get("[class*='jumbotron'] [class='btn btn-primary']"),headertextvalues)
+
+ 
 
    //Check for a value in dropdown list and click on the value once found
    cy.get('ul#ui-id-1 li div').each(($el, index, $list) => {

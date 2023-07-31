@@ -53,6 +53,14 @@ Cypress.Commands.add('selectProduct', (productName) => {
 
  })
 
+ Cypress.Commands.add("CompareTwoListsorArrays",(locator,values)=>{
+   locator.should(($el)=>{
+      const text=$el.toArray().map(el => el.innerText)
+      expect(text).to.deep.eq(values)
+     })
+
+ })
+
 
 //
 //

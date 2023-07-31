@@ -6,7 +6,8 @@ module.exports = defineConfig({
 
   defaultCommandTimeout: 10000, 
   env: {
-    url:'https://rahulshettyacademy.com'
+    url:'https://rahulshettyacademy.com',
+    cricbuzz:'https://www.cricbuzz.com/'
   },
   retries: {
     runMode: 1

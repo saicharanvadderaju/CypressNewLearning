@@ -46,6 +46,7 @@ describe('Building Framework', () => {
     cy.get('tr td:nth-child(4) strong').each(($el, index, $list) => {
       var pricetext=$el.text().split(" ")[1];//Grab the value at first index from array
       pricetext=pricetext.trim()//Remove extra spaces
+      //By default JS treats values assigned to var as a String. Hence we need to convert sum to Number as well
       sum=Number(sum)+Number(pricetext);//Number(string) - used to convert string to Integer
        
     }).then(()=>{cy.log(sum)})
