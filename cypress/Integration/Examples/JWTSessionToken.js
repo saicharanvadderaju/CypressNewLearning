@@ -3,18 +3,22 @@
 const neatCSV=require('neat-csv') 
 
 describe('JWT Session', () => {
-    it('Logged in through local storage', async () => {
+  before(()=>{Cypress.session.clearAllSavedSessions()})
+  beforeEach(() => {
+    cy.LoginAPI('saicharanvaddiraju@gmail.com','Saicharan@2b8').then(()=>{
+      cy.visit("https://rahulshettyacademy.com/client",{
+     
+      onBeforeLoad:(window)=>{
+      window.localStorage.setItem('token',Cypress.env('token'))
+      }
 
-      cy.LoginAPI().then(()=>{
-        cy.visit("https://rahulshettyacademy.com/client",{
-       
-        onBeforeLoad:(window)=>{
-        window.localStorage.setItem('token',Cypress.env('token'))
-        }
-
-        })
       })
+    })
+  })
 
+    it('Logged in through local storage', () => {
+      //{"userEmail":"saicharanvaddiraju@gmail.com","userPassword":"Saicharan@2b8"}).
+      cy.visit('https://rahulshettyacademy.com/client')
       cy.get("[class='card-body']").each(($el, index, $list) => {
         const text=$el.find('h5 b').text()
 
@@ -45,12 +49,31 @@ describe('JWT Session', () => {
       cy.get('.order-summary button').eq(0).click()
 
       cy.readFile(Cypress.config("fileServerFolder")+"/cypress/downloads/order-invoice_saicharanvaddiraju.csv")
-      .then(async(text)=>{
-        const csv = await neatCSV(text)
+      .then((text)=>{
+        const csv = neatCSV(text)
         console.log(csv)
 
       })
       
     
+    })
+
+    
+    it('Validate1', () => {
+
+      cy.visit('https://rahulshettyacademy.com/client')
+      cy.contains('HOME').should('exist')
+    })
+
+    it('Validate2', () => {
+
+      cy.visit('https://rahulshettyacademy.com/client')
+      cy.contains('ORDERS').should('exist')
+    })
+
+    it('Validate3', () => {
+
+      cy.visit('https://rahulshettyacademy.com/client')
+      cy.contains('Cart').should('exist')
     })
   })

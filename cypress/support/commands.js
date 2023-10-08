@@ -42,15 +42,16 @@ Cypress.Commands.add('selectProduct', (productName) => {
     locator.click()
  })
 
- Cypress.Commands.add("LoginAPI",()=>{
-
+ Cypress.Commands.add("LoginAPI",(email,password)=>{
+//   {"userEmail":"saicharanvaddiraju@gmail.com","userPassword":"Saicharan@2b8"}).
+   cy.session([email,password], () => {
    cy.request("POST","https://rahulshettyacademy.com/api/ecom/auth/login",
-   {"userEmail":"saicharanvaddiraju@gmail.com","userPassword":"Saicharan@2b8"}).
+   {"userEmail":email,"userPassword":password}).
    then((response)=>{
       expect(response.status).to.eq(200)
       Cypress.env('token',response.body.token)
    })
-
+   })
  })
 
  Cypress.Commands.add("CompareTwoListsorArrays",(locator,values)=>{

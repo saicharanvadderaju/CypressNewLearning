@@ -1,0 +1,18 @@
+/// <reference types="Cypress" />
+
+describe('Static and Dynamic Dropdowns Test Suite', () => {
+    it('Static and Dynamic Dropdowns Test case', () => {
+    cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
+
+
+const textList = [];
+
+cy.get("[class*='jumbotron'] [class='btn btn-primary']")
+  .each(($element) => {
+    textList.push($element.text());
+  });
+
+  cy.log(textList)
+
+    });
+});
